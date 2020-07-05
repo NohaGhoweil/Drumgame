@@ -1,17 +1,15 @@
-numOfBtns = document.querySelectorAll(".drum").length;
 
 // Clicking on spisefic place 
-for (var i = 0; i < numOfBtns; i++) {
-    document.querySelectorAll(".drum")[i].addEventListener("click", function () {
+    $(".drum").on("click", function () {
         var buttonInnerHtml = this.innerHTML;
         makeSound(buttonInnerHtml);
         buttonAnimation(buttonInnerHtml);
     });
 
-}
+
 
 // Key press function -General-
-document.addEventListener("keypress", function (event) {
+$(document).on("keypress", function (event) {
 
     makeSound(event.key);
     buttonAnimation(event.key);
@@ -64,9 +62,8 @@ function makeSound(key) {
 }
 
 function buttonAnimation(currentKey){
-var activeButton = document.querySelector("."+currentKey);
-activeButton.classList.add("pressed");
+ $("."+currentKey).addClass("pressed");
 setTimeout(function(){
-    activeButton.classList.remove("pressed");  
+    $("."+currentKey).removeClass("pressed");  
 },100)
 }
